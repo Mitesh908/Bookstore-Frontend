@@ -1,0 +1,33 @@
+<!-- <h2>My Books</h2>
+<ul class="books">
+  <li *ngFor="let book of books">
+    <button [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)">
+      <span class="badge">{{book.id}}</span>
+      <span class="name">{{book.name}}</span>
+    </button>
+  </li>
+</ul> -->
+<!-- 
+<app-book-detail [book]="selectedBook"></app-book-detail> --> 
+
+<h2>My Book</h2>
+
+<div>
+  <label for="new-book">Book name: </label>
+  <input id="new-book" #bookName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(bookName.value); bookName.value=''">
+    Add book
+  </button>
+</div>
+
+<ul class="books">
+  <li *ngFor="let book of books">
+    <a routerLink="/detail/{{book.id}}">
+      <span class="badge">{{book.id}}</span> {{book.name}}
+    </a>
+    <button type="button" class="delete" title="delete book"
+      (click)="delete(book)">x</button>
+  </li>
+</ul>
